@@ -35,12 +35,17 @@ touch "/home/pi/chrome/First Run"
 echo 'export XAUTHORITY=/home/pi/.Xauthority' > /usr/bin/start-chrome
 echo "export DISPLAY=':0'" >> /usr/bin/start-chrome
 echo '/usr/bin/stop-chrome' >> /usr/bin/start-chrome
-echo '/usr/bin/chromium-browser --kiosk --ignore-certificate-errors --user-data-dir=/home/pi/chrome/ --test-type --noerrdialogs --no-message-box --disable-desktop-notifications --allow-running-insecure-content --disk-cache-dir=/home/pi/chrome/ --no-sandbox --disable-restore-session-state "https://kantoor.ipublications.net/prtg/test.php/$(ifconfig|grep eth0|sed "s/.\+HW//g"|cut -d " " -f 2)"' >> /usr/bin/start-chrome
+echo '/usr/bin/chromium-browser --kiosk --ignore-certificate-errors --user-data-dir=/home/pi/chrome/ --test-type --noerrdialogs --no-message-box --disable-desktop-notifications --allow-running-insecure-content --disk-cache-dir=/home/pi/chrome/ --no-sandbox --disable-restore-session-state "https://iot.nodum.io/index.php/$(ifconfig|grep eth0|sed "s/.\+HW//g"|cut -d " " -f 2)"' >> /usr/bin/start-chrome
 echo "@/usr/bin/start-chrome" >> /home/pi/.config/lxsession/LXDE-pi/autostart
 echo "killall chromium-browser" > /usr/bin/stop-chrome
 echo "rm -r /home/pi/chrome/Default/*" >> /usr/bin/stop-chrome
 chmod +x /usr/bin/stop-chrome
 chmod +x /usr/bin/start-chrome
+
+# Rotator
+sudo curl -sL "https://raw.githubusercontent.com/iPublications/nodum-raspi/master/rotate.sh" > /usr/bin/rotate.sh
+chmod +x /usr/bin/rotate.sh
+echo "*  *    * * *   root    /usr/bin/rotate.sh" > /etc/crontab
 
 # Chromium installeren
 cd /tmp
