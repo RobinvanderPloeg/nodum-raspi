@@ -1,10 +1,14 @@
 #!/bin/bash
-echo "Installing Nodum Kiosk... Wait a few minutes..."
-sleep 5
 
+sudo -i
+
+echo "Installing Nodum Kiosk... Wait a few minutes..."
+sleep 15
 
 # Muis en screensaver verbergen, beeld niet overscannen
-apt-get -y --assume-yes update && apt-get -y --assume-yes upgrade && apt-get -y --assume-yes install x11-xserver-utils unclutter
+apt-get -y --assume-yes update
+apt-get -y --assume-yes upgrade
+apt-get -y --assume-yes install x11-xserver-utils unclutter
 echo '@xset s off' >> /home/pi/.config/lxsession/LXDE-pi/autostart
 echo '@xset -dpms' >> /home/pi/.config/lxsession/LXDE-pi/autostart
 echo '@xset s noblank' >> /home/pi/.config/lxsession/LXDE-pi/autostart
