@@ -34,7 +34,7 @@ mkdir /home/pi/chrome && chmod 777 /home/pi/chrome
 touch "/home/pi/chrome/First Run"
 echo 'export XAUTHORITY=/home/pi/.Xauthority' > /usr/bin/start-chrome
 echo "export DISPLAY=':0'" >> /usr/bin/start-chrome
-echo '/usr/bin/start-chrome' >> /usr/bin/start-chrome
+echo '/usr/bin/stop-chrome' >> /usr/bin/start-chrome
 echo '/usr/bin/chromium-browser --kiosk --ignore-certificate-errors --user-data-dir=/home/pi/chrome/ --test-type --noerrdialogs --no-message-box --disable-desktop-notifications --allow-running-insecure-content --disk-cache-dir=/home/pi/chrome/ --no-sandbox --disable-restore-session-state "https://kantoor.ipublications.net/prtg/test.php/$(ifconfig|grep eth0|sed "s/.\+HW//g"|cut -d " " -f 2)"' >> /usr/bin/start-chrome
 echo "@/usr/bin/start-chrome" >> /home/pi/.config/lxsession/LXDE-pi/autostart
 echo "killall chromium-browser" > /usr/bin/stop-chrome
