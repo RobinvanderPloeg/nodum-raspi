@@ -5,6 +5,8 @@ sudo -i
 echo "Installing Nodum Kiosk... Wait a few minutes..."
 sleep 15
 
+rm /home/pi/setup.sh
+
 # Muis en screensaver verbergen, beeld niet overscannen
 apt-get -y --assume-yes update
 apt-get -y --assume-yes upgrade
@@ -60,7 +62,7 @@ curl -sL https://raw.githubusercontent.com/nodesource/distributions/master/deb/s
 apt-get -y --assume-yes install nodejs
 npm install -g ws
 
-sed -i "s/\(.*lxterminal.*\)/# \1/g" /home/pi/.config/lxsession/LXDE-pi/autostart
+sed -i "s/\(.*lxterminal.*\)//g" /home/pi/.config/lxsession/LXDE-pi/autostart
 
 clear
 
