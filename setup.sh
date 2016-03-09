@@ -1,11 +1,7 @@
 #!/bin/bash
 
-sudo -i
-
 echo "Installing Nodum Kiosk... Wait a few minutes..."
-sleep 15
-
-rm /home/pi/setup.sh
+sleep 25
 
 # Muis en screensaver verbergen, beeld niet overscannen
 apt-get -y --assume-yes update
@@ -67,6 +63,7 @@ sed -i "s/\(.*lxterminal.*\)//g" /home/pi/.config/lxsession/LXDE-pi/autostart
 clear
 
 echo "Install done... Rebooting..."
+rm /home/pi/setup.sh
 
 sleep 4
 
