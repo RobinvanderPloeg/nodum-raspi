@@ -11,7 +11,7 @@ if [[ "$n" -gt "0" ]]; then
     echo "Different, set and reboot."
     stop-chrome
     sed -i "s/\(display_rotate=\)\(.\)/\1$rotate/g" /boot/config.txt
-    reboot
+    sudo reboot
   fi
 else
   echo "Invalid"
