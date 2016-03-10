@@ -11,7 +11,6 @@ Is the keyboard layout f*cked, and can't enter the 'pipe' sign (`|`)? Use:
 ```
 wget iot.nodum.io/install
 ```
-and:
 ```
 sudo bash install
 ```
