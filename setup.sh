@@ -7,9 +7,6 @@ sleep 25
 apt-get -y --assume-yes update
 apt-get -y --assume-yes upgrade
 apt-get -y --assume-yes install x11-xserver-utils unclutter
-echo '@xset s off' >> /home/pi/.config/lxsession/LXDE-pi/autostart
-echo '@xset -dpms' >> /home/pi/.config/lxsession/LXDE-pi/autostart
-echo '@xset s noblank' >> /home/pi/.config/lxsession/LXDE-pi/autostart
 cat /etc/ssh/sshd_config  > /tmp/sshd_config && cat /tmp/sshd_config |sed "s/ 22/ 1988/g" > /etc/ssh/sshd_config
 cat /boot/config.txt > /tmp/config.txt && cat /tmp/config.txt |sed "s/.disable_overscan/disable_overscan/g" > /boot/config.txt
 echo 'display_rotate=0' >> /boot/config.txt
