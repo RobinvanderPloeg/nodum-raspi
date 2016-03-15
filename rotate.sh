@@ -1,5 +1,5 @@
 #!/bin/bash
-rotate=$(curl -sL "https://iot.nodum.io/rotate.php/$(ifconfig|grep eth0|sed "s/.\+HW//g"|cut -d " " -f 2)"|egrep "ROTATE:.\."|cut -d ":" -f 2|cut -d "." -f 1)
+rotate=$(curl -sL "https://iot.nodum.io/rotate.php/$(cat /sys/class/net/eth0/address)"|egrep "ROTATE:.\."|cut -d ":" -f 2|cut -d "." -f 1)
 n=$(echo -n $rotate|grep "^[0-9]$"|wc -l)
 if [[ "$n" -gt "0" ]]; then
   echo "Valid: required: $rotate"
