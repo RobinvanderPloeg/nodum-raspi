@@ -6,6 +6,7 @@ sleep 25
 # Muis en screensaver verbergen, beeld niet overscannen
 apt-get -y --assume-yes update
 apt-get -y --assume-yes upgrade
+apt-get -y --assume-yes dist-upgrade
 apt-get -y --assume-yes install x11-xserver-utils unclutter
 cat /etc/ssh/sshd_config  > /tmp/sshd_config && cat /tmp/sshd_config |sed "s/ 22/ 1988/g" > /etc/ssh/sshd_config
 cat /boot/config.txt > /tmp/config.txt && cat /tmp/config.txt |sed "s/.disable_overscan/disable_overscan/g" > /boot/config.txt
@@ -15,7 +16,7 @@ sed -i "s/autohide=./autohide=1/g" /home/pi/.config/lxpanel/LXDE-pi/panels/panel
 sed -i "s/\$/ quiet logo.nologo/g" /boot/cmdline.txt
 # sed -i "s/tty1/null/g" /boot/cmdline.txt
 echo "disable_splash=1" >> /boot/config.txt
-# echo "avoid_warnings=1" >> /boot/config.txt
+echo "avoid_warnings=1" >> /boot/config.txt
 
 # Prullenbak van de desktop af
 apt-get -y --assume-yes remove gvfs
@@ -56,7 +57,7 @@ dpkg -i chromium-browser_48.0.2564.82-0ubuntu0.15.04.1.1193_armhf.deb
 # Nieuwe NodeJS versie installeren
 apt-get -y --assume-yes remove nodered nodejs nodejs-legacy npm
 cd /tmp
-curl -sL https://raw.githubusercontent.com/nodesource/distributions/master/deb/setup_5.x|bash -
+curl -sL https://raw.githubusercontent.com/nodesource/distributions/master/deb/setup_6.x|bash -
 apt-get -y --assume-yes install nodejs
 npm install -g ws
 
@@ -66,6 +67,8 @@ clear
 
 echo "Install done... Rebooting..."
 rm /home/pi/setup.sh
+
+sudo rpi-update
 
 sleep 4
 
